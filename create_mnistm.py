@@ -30,6 +30,7 @@ for name in train_files:
 
 
 def compose_image(digit, background):
+    """Difference-blend a digit and a random patch from a background image."""
     w, h, _ = background.shape
     dw, dh, _ = digit.shape
     x = np.random.randint(0, w - dw)
@@ -40,12 +41,18 @@ def compose_image(digit, background):
 
 
 def mnist_to_img(x):
+    """Binarize MNIST digit and convert to RGB."""
     x = (x > 0).astype(np.float32)
     d = x.reshape([28, 28, 1]) * 255
     return np.concatenate([d, d, d], 2)
 
 
 def create_mnistm(X):
+    """
+    Give an array of MNIST digits, blend random background patches to
+    build the MNIST-M dataset as described in
+    http://jmlr.org/papers/volume17/15-239/15-239.pdf
+    """
     X_ = np.zeros([X.shape[0], 28, 28, 3], np.uint8)
     for i in range(X.shape[0]):
 
@@ -60,6 +67,7 @@ def create_mnistm(X):
 
     return X_
 
+
 print 'Building train set...'
 train = create_mnistm(mnist.train.images)
 print 'Building test set...'
@@ -67,6 +75,7 @@ test = create_mnistm(mnist.test.images)
 print 'Building validation set...'
 valid = create_mnistm(mnist.validation.images)
 
+# Save dataset as pickle
 with open('mnistm_data.pkl', 'w') as f:
     pkl.dump({ 'train': train, 'test': test, 'valid': valid }, f, -1)
 
