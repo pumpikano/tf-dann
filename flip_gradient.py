@@ -10,10 +10,12 @@ def _flip_gradient_grad(op, grad):
     """The gradients for `flip_gradient`.
 
     Args:
-        op: The `flip_gradient` `Operation` that we are differentiating.
+        op: The `flip_gradient` `Operation` that we are differentiating, which we can use
+            to find the inputs and outputs of the original op.
         grad: Gradient with respect to the output of the `flip_gradient` op.
 
     Returns:
         Gradients with respect to the input of `flip_gradient`.
     """
-    return [math_ops.neg(grad)]
+    s = op.inputs[1]
+    return [math_ops.neg(grad) * s, None]
