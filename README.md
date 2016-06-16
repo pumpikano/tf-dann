@@ -1,10 +1,8 @@
 # Domain-Adversarial Training of Neural Networks in Tensorflow
 
-"[Unsupervised Domain Adaptation by Backpropagation](http://sites.skoltech.ru/compvision/projects/grl/files/paper.pdf)" introduced a simple and effective method for accomplishing domain adaptation with SGD with a gradient reversal layer. This work was elaborated and extended in "[Domain-Adversarial Training of Neural Networks](http://jmlr.org/papers/volume17/15-239/15-239.pdf)".
+"[Unsupervised Domain Adaptation by Backpropagation](http://sites.skoltech.ru/compvision/projects/grl/files/paper.pdf)" introduced a simple and effective method for accomplishing domain adaptation with SGD with a gradient reversal layer. This work was elaborated and extended in "[Domain-Adversarial Training of Neural Networks](http://jmlr.org/papers/volume17/15-239/15-239.pdf)". For more information as well as a link to an equivalent implementation in Caffe, see http://sites.skoltech.ru/compvision/projects/grl/.
 
-This repository implements the MNIST domain adaptation experiment presented in "[Domain-Adversarial Training of Neural Networks](http://jmlr.org/papers/volume17/15-239/15-239.pdf)" in Tensorflow. It differs in the details of the optimization (using the `AdamOptimizer` rather than the learning rate schedule detailed in the paper), but implements the same model described in the paper for MNIST experiments.
-
-For more information as well as a link to an equivalent implementation in Caffe, see http://sites.skoltech.ru/compvision/projects/grl/.
+The `Blobs-DANN.ipynb` shows some basic experiments on a very simple dataset. 
 
 ## Gradient Reversal Layer
 

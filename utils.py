@@ -25,6 +25,7 @@ def max_pool_2x2(x):
 
 
 def shuffle_aligned_list(data):
+    """Shuffle arrays in a list by shuffling each array identically."""
     num = data[0].shape[0]
     p = np.random.permutation(num)
     return [d[p] for d in data]
