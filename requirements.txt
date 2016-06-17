@@ -1,3 +1,6 @@
 numpy
 scikit-image
 matplotlib
+scikit-learn
+jupyter
+scipy
