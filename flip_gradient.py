@@ -10,7 +10,7 @@ class FlipGradientBuilder(object):
         grad_name = "FlipGradient%d" % self.num_calls
         @ops.RegisterGradient(grad_name)
         def _flip_gradients(op, grad):
-            return [tf.neg(grad) * l]
+            return [tf.negative(grad) * l]
         
         g = tf.get_default_graph()
         with g.gradient_override_map({"Identity": grad_name}):
