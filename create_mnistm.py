@@ -1,6 +1,6 @@
 import tarfile
 import os
-import cPickle as pkl
+import pickle as pkl
 import numpy as np
 import skimage
 import skimage.io
@@ -18,7 +18,7 @@ for name in f.getnames():
     if name.startswith('BSR/BSDS500/data/images/train/'):
         train_files.append(name)
 
-print 'Loading BSR training images'
+print('Loading BSR training images')
 background_data = []
 for name in train_files:
     try:
@@ -57,7 +57,7 @@ def create_mnistm(X):
     for i in range(X.shape[0]):
 
         if i % 1000 == 0:
-            print i
+            print(i)
 
         bg_img = rand.choice(background_data)
 
@@ -68,15 +68,15 @@ def create_mnistm(X):
     return X_
 
 
-print 'Building train set...'
+print('Building train set...')
 train = create_mnistm(mnist.train.images)
-print 'Building test set...'
+print('Building test set...')
 test = create_mnistm(mnist.test.images)
-print 'Building validation set...'
+print('Building validation set...')
 valid = create_mnistm(mnist.validation.images)
 
 # Save dataset as pickle
-with open('mnistm_data.pkl', 'w') as f:
+with open('mnistm_data.pkl', 'wb') as f:
     pkl.dump({ 'train': train, 'test': test, 'valid': valid }, f, -1)
 
 

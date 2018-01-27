@@ -5,15 +5,14 @@ from mpl_toolkits.axes_grid1 import ImageGrid
 
 # Model construction utilities below adapted from
 # https://www.tensorflow.org/versions/r0.8/tutorials/mnist/pros/index.html#deep-mnist-for-experts
-def weight_variable(shape):
-    initial = tf.truncated_normal(shape, stddev=0.1)
-    return tf.Variable(initial)
 
+def weight_variable(shape):
+  initial = tf.truncated_normal(shape, stddev=0.1)
+  return tf.Variable(initial)
 
 def bias_variable(shape):
-    initial = tf.constant(0.1, shape=shape)
-    return tf.Variable(initial)
-
+  initial = tf.constant(0.1, shape=shape)
+  return tf.Variable(initial)
 
 def conv2d(x, W):
     return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
@@ -52,6 +51,8 @@ def batch_generator(data, batch_size, shuffle=True):
         start = batch_count * batch_size
         end = start + batch_size
         batch_count += 1
+        start = (int)(start)
+        end = (int)(end)
         yield [d[start:end] for d in data]
 
 
